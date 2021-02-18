@@ -96,7 +96,6 @@ CD_95<-function(y,x,level=0.05,p=0.5,W=FALSE,SR=FALSE){
 			}else{
 
 				print(paste("Wilcoxon-Signed rank: Failed to Reject the null hypothesis at ",level," level"))
-				return(0)
 				WilcoxonSign<-0
 
 			}
@@ -144,19 +143,19 @@ CD_95<-function(y,x,level=0.05,p=0.5,W=FALSE,SR=FALSE){
 
 		if(W==TRUE && SR==TRUE){
 
-			R95<-c(Sign,WilcoxonSign,SignRank)
+			R_95<-c(Sign,WilcoxonSign,SignRank)
 
 		}else if(W==TRUE && SR==FALSE){
 
-			R95<-c(Sign,WilcoxonSign)
+			R_95<-c(Sign,WilcoxonSign)
 
 		}else if(W==FALSE && SR==TRUE){
 
-			R95<-c(Sign,SignRank)
+			R_95<-c(Sign,SignRank)
 
 		}
 
-		return(R95)
+		return(R_95)
 
 	}
 
