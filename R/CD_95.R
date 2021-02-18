@@ -53,12 +53,12 @@ CD_95<-function(y,x,level=0.05,p=0.5,W=FALSE,SR=FALSE){
 		if(CDStat>CritVal_U || CDStat<CritVal_L){
 
 			print(paste("Signed: Rejected the null hypotehsis at ",level," level"))
-			Sign<-1
+			
 
 		}else{
 
 			print(paste("Signed: Failed to Reject the null hypothesis at ",level," level"))
-			Sign<-0
+			
 
 		}
 
@@ -91,12 +91,12 @@ CD_95<-function(y,x,level=0.05,p=0.5,W=FALSE,SR=FALSE){
 			if(CDRStat>CritValR_U || CDRStat<CritValR_L){
 
 				print(paste("Wilcoxon-Signed rank: Rejected the null hypotehsis at ",level," level"))
-				WilcoxonSign<-1
+				
 
 			}else{
 
 				print(paste("Wilcoxon-Signed rank: Failed to Reject the null hypothesis at ",level," level"))
-				WilcoxonSign<-0
+				
 
 			}
 
@@ -129,33 +129,18 @@ CD_95<-function(y,x,level=0.05,p=0.5,W=FALSE,SR=FALSE){
 			if(CDWStat>CritValW_U || CDWStat<CritValW_L){
 
 				print(paste("Signed rank: Rejected the null hypotehsis at ",level," level"))
-				SignRank<-1
+				
 
 			}else{
 
 				print(paste("Signed rank: Failed to Reject the null hypothesis at ",level," level"))
-				SignRank<-0
+				
 
 			}
 
 		}
 
 
-		if(W==TRUE && SR==TRUE){
-
-			R_95<-c(Sign,WilcoxonSign,SignRank)
-
-		}else if(W==TRUE && SR==FALSE){
-
-			R_95<-c(Sign,WilcoxonSign)
-
-		}else if(W==FALSE && SR==TRUE){
-
-			R_95<-c(Sign,SignRank)
-
-		}
-
-		return(R_95)
 
 	}
 
