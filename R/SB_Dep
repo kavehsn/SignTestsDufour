@@ -1,0 +1,119 @@
+#' Signed tests of Coudin and Dufour for serially (nonlinear) dependent data (2009)
+#'
+#' This function provides the nonparametric sign-based and sign-ranked tests using bound-type procedures in the presence of a nuistance parameter, that have been proposed by Campbell and Dufour (1997). 
+#' These tests are valid in the presence of a single regressor and a nuisance parameters (i.e. intercept).
+#' 
+#' @param y the vector of dependent variables
+#' @param x the vector of regressors
+#' @param null the null hypothesis
+#' @param level the level of the test. Default value is 0.05.
+#' @param p the success probability of the binomial distribution for each trial. Default value is 0.5.
+#' @keywords Nonparametric Sign-tests Cambell and Dufour (1995)
+#' @export
+#' @examples
+#' SB_Dep(y,x)
+
+
+SB_Dep<-function(y,x,null=c(0,0),level=0.05,p=0.5,Dpndnt=FALSE,asymp=FALSE,B=10000){
+
+	if(is.matrix(x)==TRUE){
+
+		if(nrow(x)!=length(y)){
+
+			"The number of rows of matrix X and the length of vector y must be equal!"
+
+		}else{
+
+
+			n<-length(y)
+
+			X<-matrix(data=c(rep(1,time=n),x),nrow=n,ncol=ncol(x)+1)
+
+
+			sgn_u<-1*((y-(X%*%null))>=0)
+
+			P<-X%*%inv((t(X)%*%X)/n)%*%t(X)
+
+			SF<-t(sgn_u)%*%P%*%sgn_u
+
+
+			for(i in 1:B){
+
+				sgn_u_Sim<-rbinom(n,1,p)
+				SF_Sim<-t(sgn_u_Sim)%*%P%*%sgn_u_Sim
+
+			}
+
+
+
+			CritVal<-quantile(SF_Sim,1-level)
+
+
+			print(paste("SF: The critical value at ",level," level is", CritVal))
+
+			if(SF>CritVal){
+
+				print(paste("SF: Rejected the null hypotehsis at ",level," level"))
+
+			}else{
+
+				print(paste("SF: Failed to Reject the null hypothesis at ",level," level"))
+
+			}
+
+
+
+		}
+	}else{
+
+		if(length(x)!=length(y)){
+
+			"The lengths of the vectors x and y must be equal!"
+
+		}else{
+
+
+			n<-length(y)
+
+			X<-matrix(data=c(rep(1,time=n),x),nrow=n,ncol=2)
+
+
+			sgn_u<-1*((y-(X%*%null))>=0)
+
+			P<-X%*%inv((t(X)%*%X)/n)%*%t(X)
+
+			SF<-t(sgn_u)%*%P%*%sgn_u
+
+
+			for(i in 1:B){
+
+				sgn_u_Sim<-rbinom(n,1,p)
+				SF_Sim<-t(sgn_u_Sim)%*%P%*%sgn_u_Sim
+
+			}
+
+
+
+			CritVal<-quantile(SF_Sim,1-level)
+			
+
+			print(paste("SF: The critical value at ",level," level is", CritVal))
+
+			if(SF>CritVal){
+
+				print(paste("SF: Rejected the null hypotehsis at ",level," level"))
+
+			}else{
+
+				print(paste("SF: Failed to Reject the null hypothesis at ",level," level"))
+
+			}
+
+
+
+
+
+		}
+
+
+	}
