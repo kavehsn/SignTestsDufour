@@ -1,0 +1,21 @@
+Package: SignTestsDufour
+Title: Exact Nonparametric Signed and Signed Rank Tests
+Version: 1.0.0
+Authors@R: 
+    person(given = "Kaveh",
+           family = "Salehzadeh Nobari",
+           email = "cnobari@gmail.com",
+           comment = c(ORCID = "0000-0002-4053-0781"))
+Description: This package contains the exact signed, HAC-corrected signed, signed rank and point-optimal sign-based tests of Professor. Jean-Marie Dufour and his coauthors. The tests are distribution-free and robust against heteroskedasticity of unknown form. Moreover, within a predictive regression framework, the tests of Campbell and Dufour (1995, 1997) are valid (control size for any given sample size), in the presence of highly persistent/endogeneous regressors.
+Imports: MASS, caTools, purrr, Rdpack (>= 0.7)
+RdMacros: Rdpack
+License: GPL (>= 3)
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1.9000
+NeedsCompilation: no
+Packaged: 2021-01-30 06:08:11 UTC; kaveh
+Author: Kaveh Salehzadeh Nobari [aut, cre]
+    (<https://orcid.org/0000-0002-4053-0781>)
+Maintainer: Kaveh Salehzadeh Nobari <cnobari@gmail.com>
