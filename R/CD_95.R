@@ -156,7 +156,7 @@ CD_95<-function(y,x,level=0.05,p=0.5,W=FALSE,SR=FALSE){
 
 		}
 
-		return(R)
+		return(R95)
 
 	}
 
